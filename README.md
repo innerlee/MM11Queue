@@ -3,7 +3,7 @@ The M/M/1/1 queuing system written in Julia.
 
 MM11Queue implements two simulation routines.
 
-### Fixed Increment Time Advance
+### Fixed-Increment Time Advance
 <img src=fig/fixed_increment.png width=400 />
 
 ### Next-Event Time Advance
