@@ -17,6 +17,7 @@ julia
 * setup drawing package. in the julia environment, type
 ```cmd
 Pkg.add("Gadfly")
+Pkg.add("Cairo")
 ```
 
 * run codes. in julia, type
