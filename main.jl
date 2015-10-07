@@ -1,4 +1,6 @@
-include("mm11queue.jl")
+include("common.jl")
+include("fixed_increment.jl")
+include("next_event.jl")
 
 say("hello, bufan!")
 

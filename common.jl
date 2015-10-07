@@ -6,8 +6,6 @@ end
 
 # generate n random numbers from Bernoulli dist. X with Pr(X=true)=p
 function bernoulli(p::Real, n::Int=1)
-  # n==1 ? (rand()<p?1:0) :
-  # [rand()<p?1:0 for i=1:n]
   n==1 ? rand()<p :
   [rand()<p for i=1:n]
 end
