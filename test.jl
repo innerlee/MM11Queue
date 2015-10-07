@@ -21,7 +21,7 @@ fig = plot(layer(x=timeline, y=busy, Geom.line),
       Guide.YLabel("Probability"),
       Guide.Title("Fixed-Increment Time Advance ($Lsim sims in $time_used s)"),
       Theme(background_color=color(colorant"white")))
-draw(SVG("fig/fixed_increment.svg", 8inch, 6inch), fig)
+draw(SVG("fixed_increment.svg", 8inch, 6inch), fig)
 
 Lsim = 10000
 say("= next_event, simulate $Lsim times")
@@ -44,7 +44,7 @@ fig = plot(layer(x=timeline, y=busy, Geom.line),
       Guide.YLabel("Probability"),
       Guide.Title("Next-Event Time Advance ($Lsim sims in $time_used s)"),
       Theme(background_color=color(colorant"white")))
-draw(SVG("fig/next_event.svg", 8inch, 6inch), fig)
+draw(SVG("next_event.svg", 8inch, 6inch), fig)
 
 say("= drawing theoretical result")
 
@@ -66,4 +66,4 @@ fig = plot(layer(x=timeline, y=busy, Geom.line),
       Guide.YLabel("Probability"),
       Guide.Title("Theoretical Result ($time_used s)"),
       Theme(background_color=color(colorant"white")))
-draw(SVG("fig/theoretical.svg", 8inch, 6inch), fig)
+draw(SVG("theoretical.svg", 8inch, 6inch), fig)
