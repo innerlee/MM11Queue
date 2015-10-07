@@ -17,7 +17,7 @@ julia
 ```
 
 * setup drawing package. in the julia environment, type
-```juila
+```julia
 Pkg.add("Gadfly")
 Pkg.add("Cairo")
 ```
