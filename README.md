@@ -17,13 +17,13 @@ julia
 ```
 
 * setup drawing package. in the julia environment, type
-```cmd
+```juila
 Pkg.add("Gadfly")
 Pkg.add("Cairo")
 ```
 
 * run codes. in julia, type
-```cmd
+```julia
 include("main.jl")
 ```
 you will see a picture pops up. that's it.
