@@ -4,10 +4,13 @@ The M/M/1/1 queuing system written in Julia.
 MM11Queue implements two simulation routines.
 
 ### Fixed Increment Time Advance
-implemented.
+[figure of fixed_increment](/fixed_increment.svg)
 
 ### Next-Event Time Advance
-todo.
+[figure of next_event](/next_event.svg)
+
+### Theoretical Result
+[figure of theoretical](/theoretical.svg)
 
 ## How To Use
 
@@ -26,4 +29,4 @@ Pkg.add("Cairo")
 ```julia
 include("main.jl")
 ```
-you will see a picture pops up. that's it.
+you will see figures with .svg extention generated.
