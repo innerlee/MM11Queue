@@ -9,9 +9,6 @@ function next_event(
   mu_inv = 1/mu
   total_steps = Int(floor(t_end/delta_t)) # not includs step 0
   N = falses(total_steps) # state in each step, true for busy
-  busy = false # init free
-
-  #say("= next event: total steps: $total_steps")
 
   step = 1
   while step < total_steps

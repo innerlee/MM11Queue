@@ -23,7 +23,6 @@ fig = plot(layer(x=timeline, y=busy, Geom.line),
       Theme(background_color=color(colorant"white")))
 draw(SVG("fixed_increment.svg", 8inch, 6inch), fig)
 
-Lsim = 10000
 say("= next_event, simulate $Lsim times")
 
 tic()

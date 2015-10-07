@@ -9,26 +9,14 @@ function fixed_increment(
   N = falses(total_steps + 1) # state in each step, true for busy
   iscomeing = bernoulli(lambda*delta_t, total_steps) # new customer come?
   isleaving = bernoulli(mu*delta_t, total_steps) # decide leave or not
-  M = 0 # number of customers so far
 
-  #say("= fixed increment: total steps: $total_steps")
-
-  # time 0 is free, ignoring
   for i = 1:total_steps
     # step i has time i*delta_t.
-    if N[i]
-      # busy
-      iscomeing[i] = false # ignore coming customer
-
-    elseif iscomeing[i]
-      # new customer
-      M += 1
+    if !N[i] && iscomeing[i] # not busy & new customer comes
       N[i] = true # now busy
 
-    else
-      # not busy and no new customer, ignore leaving
-      isleaving[i] = false
-      continue
+    elseif !N[i] && !iscomeing[i] # not busy and no new customer
+      continue # ignore
 
     end
 
