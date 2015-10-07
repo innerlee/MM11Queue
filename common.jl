@@ -1,4 +1,3 @@
-
 # debug
 function say(sth)
   println(sth)
