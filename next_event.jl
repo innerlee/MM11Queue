@@ -3,7 +3,8 @@ function next_event(
           lambda::Float64=0.05,
           mu::Float64=0.1,
           delta_t::Float64=0.01,
-          t_end::Float64=50.0
+          t_end::Float64=50.0,
+          compute_time::Bool=false
           )
   lambda_inv = 1/lambda
   mu_inv = 1/mu
@@ -31,6 +32,11 @@ function next_event(
     step = step_to + 1
   end
 
-  time = [i*delta_t for i=0:total_steps]
-  (time, [[0]; N[1:total_steps]])
+  if compute_time
+    time = [i*delta_t for i=0:total_steps]
+    return (time, [[0]; N[1:total_steps]])
+  else
+    return [[0]; N[1:total_steps]]
+  end
+
 end

@@ -1,14 +1,17 @@
 Lsim=10000
-drawpng = false
+lambda = 0.05
+mu = 0.1
+delta_t = 0.01
+t_end = 50.0
+drawpng = true
 
 say("= fixed_increment, simulate $Lsim times")
 
 tic()
-(timeline, states) = fixed_increment()
+(timeline, states) = fixed_increment(lambda, mu, delta_t, t_end, true)
 
 for i=2:Lsim
-  (a, b) = fixed_increment()
-  states += b
+  states += fixed_increment(lambda, mu, delta_t, t_end)
 end
 
 busy = states/Lsim
@@ -28,11 +31,10 @@ drawpng? draw(PNG("fig/fixed_increment.png", 8inch, 6inch), fig) : nothing
 say("= next_event, simulate $Lsim times")
 
 tic()
-(timeline, states) = next_event()
+(timeline, states) = next_event(lambda, mu, delta_t, t_end, true)
 
 for i=2:Lsim
-  (a, b) = next_event()
-  states += b
+  states += next_event(lambda, mu, delta_t, t_end)
 end
 
 busy = states/Lsim
@@ -51,10 +53,6 @@ drawpng? draw(PNG("fig/next_event.png", 8inch, 6inch), fig) : nothing
 say("= drawing theoretical result")
 
 tic()
-lambda = 0.05
-mu = 0.1
-delta_t = 0.01
-t_end = 50.0
 total_steps = Int(floor(t_end/delta_t))
 time = [i*delta_t for i=0:total_steps]
 arg = lambda/(lambda+mu)
