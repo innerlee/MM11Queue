@@ -1,4 +1,5 @@
 Lsim=10000
+drawpng = false
 
 say("= fixed_increment, simulate $Lsim times")
 
@@ -22,6 +23,7 @@ fig = plot(layer(x=timeline, y=busy, Geom.line),
       Guide.Title("Fixed-Increment Time Advance ($Lsim sims in $time_used s)"),
       Theme(background_color=color(colorant"white")))
 draw(SVG("fixed_increment.svg", 8inch, 6inch), fig)
+drawpng? draw(PNG("fig/fixed_increment.png", 8inch, 6inch), fig) : nothing
 
 say("= next_event, simulate $Lsim times")
 
@@ -44,6 +46,7 @@ fig = plot(layer(x=timeline, y=busy, Geom.line),
       Guide.Title("Next-Event Time Advance ($Lsim sims in $time_used s)"),
       Theme(background_color=color(colorant"white")))
 draw(SVG("next_event.svg", 8inch, 6inch), fig)
+drawpng? draw(PNG("fig/next_event.png", 8inch, 6inch), fig) : nothing
 
 say("= drawing theoretical result")
 
@@ -66,3 +69,4 @@ fig = plot(layer(x=timeline, y=busy, Geom.line),
       Guide.Title("Theoretical Result ($time_used s)"),
       Theme(background_color=color(colorant"white")))
 draw(SVG("theoretical.svg", 8inch, 6inch), fig)
+drawpng? draw(PNG("fig/theoretical.png", 8inch, 6inch), fig) : nothing

@@ -5,26 +5,20 @@ function fixed_increment(
           delta_t::Float64=0.01,
           t_end::Float64=50.0
           )
-  total_steps = Int(floor(t_end/delta_t)) # not includs step 0
-  N = falses(total_steps + 1) # state in each step, true for busy
-  iscomeing = bernoulli(lambda*delta_t, total_steps) # new customer come?
-  isleaving = bernoulli(mu*delta_t, total_steps) # decide leave or not
+  lambda_delta = lambda*delta_t
+  mu_delta = mu*delta_t
+  total_steps = Int(floor(t_end/delta_t)) # not including step 0
+  N = falses(total_steps) # state in each step, true for busy
 
+  is_next_free = true
   for i = 1:total_steps
-    # step i has time i*delta_t.
-    if !N[i] && iscomeing[i] # not busy & new customer comes
-      N[i] = true # now busy
 
-    elseif !N[i] && !iscomeing[i] # not busy and no new customer
-      continue # ignore
-
+    if is_next_free && !bernoulli(lambda_delta)
+      continue # free & no new customer
     end
 
-    if !isleaving[i]
-      # still busy, so next slot must also busy
-      # we assume minimum service time is delta_t
-      N[i+1] = true
-    end
+    N[i] = true # busy
+    is_next_free = bernoulli(mu_delta) # decide to leave
 
   end
 
